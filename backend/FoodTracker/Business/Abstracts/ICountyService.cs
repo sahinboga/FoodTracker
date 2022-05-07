@@ -12,5 +12,6 @@ namespace Business.Abstracts
 	{
 		IDataResult<List<County>> GetAll();
 		IDataResult<County> GetById(int countyId);
+		IDataResult<List<County>> GetCountyByCity(int cityId);
 	}
 }

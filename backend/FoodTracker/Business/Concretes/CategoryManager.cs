@@ -1,5 +1,7 @@
 ﻿using Business.Abstracts;
+using Business.Constants;
 using Core.Utilities.Results;
+using DataAccess.Abstracts;
 using Entities.Concretes;
 using System;
 using System.Collections.Generic;
@@ -11,29 +13,23 @@ namespace Business.Concretes
 {
 	public class CategoryManager : ICategoryService
 	{
-		public IResult Add(Category category)
+		ICategoryDal _categoryDal;
+
+		public CategoryManager(ICategoryDal categoryDal)
 		{
-			throw new NotImplementedException();
+			_categoryDal = categoryDal;
 		}
 
-		public IResult Delete(Category category)
-		{
-			throw new NotImplementedException();
-		}
 
 		public IDataResult<List<Category>> GetAll()
 		{
-			throw new NotImplementedException();
+			return new SuccessDataResult<List<Category>>(_categoryDal.GetAll(),Messages.Listed);
 		}
 
 		public IDataResult<Category> GetById(int categoryId)
 		{
-			throw new NotImplementedException();
-		}
-
-		public IResult Update(Category category)
-		{
-			throw new NotImplementedException();
+			var category = _categoryDal.GetById(c => c.Id == categoryId);
+			return new SuccessDataResult<Category>(category);
 		}
 	}
 }

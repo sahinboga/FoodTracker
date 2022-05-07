@@ -1,24 +1,30 @@
 ﻿using Business.Abstracts;
+using Business.Constants;
 using Core.Utilities.Results;
+using DataAccess.Abstracts;
 using Entities.Concretes;
-using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Concretes
 {
 	public class CityManager : ICityService
 	{
+		ICityDal _cityDal;
+
+		public CityManager(ICityDal cityDal)
+		{
+			_cityDal = cityDal;
+		}
+
 		public IDataResult<List<City>> GetAll()
 		{
-			throw new NotImplementedException();
+			return new SuccessDataResult<List<City>>(_cityDal.GetAll(),Messages.Listed);
 		}
 
 		public IDataResult<City> GetById(int cityId)
 		{
-			throw new NotImplementedException();
+			var city = _cityDal.GetById(c => c.Id == cityId);
+			return new SuccessDataResult<City>(city);
 		}
 	}
 }
