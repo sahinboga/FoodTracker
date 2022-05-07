@@ -43,6 +43,14 @@
             "Castle.Core": {
               "target": "Package",
               "version": "[4.4.1, )"
+            },
+            "Microsoft.EntityFrameworkCore": {
+              "target": "Package",
+              "version": "[5.0.15, )"
+            },
+            "Microsoft.Extensions.Configuration.UserSecrets": {
+              "target": "Package",
+              "version": "[5.0.0, )"
             }
           },
           "imports": [
