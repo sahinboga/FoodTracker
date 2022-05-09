@@ -11,7 +11,7 @@ namespace Entities.Concretes
 	{
 		public int Id { get; set; }
 		public int CategoryId { get; set; }
-		public string ReastaurantName { get; set; }
+		public string RestaurantName { get; set; }
 		public int CountyId { get; set; }
 		public DateTime FoundedDate { get; set; }
 	}

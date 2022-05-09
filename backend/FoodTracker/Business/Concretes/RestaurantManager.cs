@@ -24,7 +24,7 @@ namespace Business.Concretes
 		public IResult Add(Restaurant restaurant)
 		{
 			//Aynı isimde restoran eklenmez
-			IResult result = BusinessRules.Run(CheckIfRestaurantNameExists(restaurant.ReastaurantName));
+			IResult result = BusinessRules.Run(CheckIfRestaurantNameExists(restaurant.RestaurantName));
 
 			if (result != null)
 			{
@@ -63,7 +63,7 @@ namespace Business.Concretes
 		public IResult Update(Restaurant restaurant)
 		{
 			//aynı isimde restoran güncellemesi olamaz
-			IResult result = BusinessRules.Run(CheckIfRestaurantNameExists(restaurant.ReastaurantName));
+			IResult result = BusinessRules.Run(CheckIfRestaurantNameExists(restaurant.RestaurantName));
 
 			if (result != null)
 			{
@@ -78,7 +78,7 @@ namespace Business.Concretes
 		// aynı isimde restoranların önüne geçme kuralı
 		private IResult CheckIfRestaurantNameExists(string restaurantName)
 		{
-			var result = _restaurantDal.GetAll(r => r.ReastaurantName == restaurantName).Any();
+			var result = _restaurantDal.GetAll(r => r.RestaurantName == restaurantName).Any();
 			if (result)
 			{
 				return new ErrorResult(Messages.RestaurantNameAlreadyExists);

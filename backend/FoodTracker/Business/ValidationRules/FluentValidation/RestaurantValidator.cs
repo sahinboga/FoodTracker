@@ -12,8 +12,8 @@ namespace Business.ValidationRules.FluentValidation
 	{
 		public RestaurantValidator() {
 
-			RuleFor(rest => rest.ReastaurantName).NotEmpty();
-			RuleFor(rest => rest.ReastaurantName).MinimumLength(5);
+			RuleFor(rest => rest.RestaurantName).NotEmpty();
+			RuleFor(rest => rest.RestaurantName).MinimumLength(5);
 			//RuleFor(rest => rest.CategoryId).NotEmpty();
 			//RuleFor(rest => rest.CountyId).NotEmpty();
 			RuleFor(rest => rest.FoundedDate).NotEmpty();
