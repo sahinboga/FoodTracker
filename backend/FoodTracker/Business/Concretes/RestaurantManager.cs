@@ -1,9 +1,13 @@
 ﻿using Business.Abstracts;
 using Business.Constants;
+using Business.ValidationRules.FluentValidation;
+using Core.Aspects.Autofac.Validation;
+using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using Entities.Concretes;
 using System.Collections.Generic;
+using System.Linq;
 
 namespace Business.Concretes
 {
@@ -16,10 +20,20 @@ namespace Business.Concretes
 			_restaurantDal = restaurantDal;
 		}
 
+		[ValidationAspect(typeof(RestaurantValidator))]
 		public IResult Add(Restaurant restaurant)
 		{
-			_restaurantDal.Add(restaurant);
-			return new SuccessResult(Messages.RestaurantAdded);
+			//Aynı isimde restoran eklenmez
+			IResult result = BusinessRules.Run(CheckIfRestaurantNameExists(restaurant.ReastaurantName));
+
+			if (result != null)
+			{
+				return result;
+			}
+
+				_restaurantDal.Add(restaurant);
+				return new SuccessResult(Messages.RestaurantAdded);
+			
 		}
 
 		public IResult Delete(Restaurant restaurant)
@@ -33,16 +47,43 @@ namespace Business.Concretes
 			return new SuccessDataResult<List<Restaurant>>(_restaurantDal.GetAll(),Messages.RestaurantListed);
 		}
 
+		public IDataResult<List<Restaurant>> GetAllByCategoryId(int categoryId)
+		{
+			var restorant = _restaurantDal.GetAll(r => r.CategoryId == categoryId);
+			return new SuccessDataResult<List<Restaurant>>(restorant);
+		}
+
 		public IDataResult<Restaurant> GetById(int restaurantId)
 		{
 			var restaurant=_restaurantDal.GetById(r=>r.Id==restaurantId);
 			return new SuccessDataResult<Restaurant>(restaurant);
 		}
 
+		[ValidationAspect(typeof(RestaurantValidator))]
 		public IResult Update(Restaurant restaurant)
 		{
+			//aynı isimde restoran güncellemesi olamaz
+			IResult result = BusinessRules.Run(CheckIfRestaurantNameExists(restaurant.ReastaurantName));
+
+			if (result != null)
+			{
+				return result;
+			}
+			
 			_restaurantDal.Update(restaurant);
 			return new SuccessResult(Messages.RestaurantUpdated);
+			
+		}
+
+		// aynı isimde restoranların önüne geçme kuralı
+		private IResult CheckIfRestaurantNameExists(string restaurantName)
+		{
+			var result = _restaurantDal.GetAll(r => r.ReastaurantName == restaurantName).Any();
+			if (result)
+			{
+				return new ErrorResult(Messages.RestaurantNameAlreadyExists);
+			}
+			return new SuccessResult();
 		}
 	}
 }

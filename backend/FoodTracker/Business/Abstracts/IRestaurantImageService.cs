@@ -1,10 +1,7 @@
 ﻿using Core.Utilities.Results;
 using Entities.Concretes;
-using System;
+using Microsoft.AspNetCore.Http;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace Business.Abstracts
 {
@@ -15,5 +12,10 @@ namespace Business.Abstracts
 		IDataResult<RestaurantImage> GetById(int imageId);
 		IResult Update(RestaurantImage restaurantImage);
 		IResult Delete(RestaurantImage restaurantImage);
+
+		IResult UploadRestaurantImage(IFormFile imageFile, RestaurantImage restaurantImage);
+
+		IDataResult<List<RestaurantImage>> GetRestaurantImagesByRestaurantId(int restaurantId);
+		IDataResult<RestaurantImage> GetFirstOrDefaultByCarId(int restaurantId);
 	}
 }

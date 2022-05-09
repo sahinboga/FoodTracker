@@ -14,5 +14,11 @@ namespace Business.Constants
 		public static string RestaurantListed = "Restoran listelendi";
 		public static string RestaurantUpdated = "Restoran güncellendi";
 		public static string RestaurantDeleted = "Restoran silindi";
+		public static string RestaurantNameAlreadyExists="Aynı isimde başka restoran zaten bulunmaktadır";
+
+		public static string ImageAdded="Resim Eklendi";
+		public static string ImageDeleted="Resim Silindi";
+		public static string ImageUpdated="Resim Güncellendi";
+		public static string ImageLimitExceded= "En fazla 3 adet Fotoğraf koyabilirsiniz.";
 	}
 }
