@@ -47,7 +47,7 @@ a {
 }
 .restaurant-wrap .text span.cat {
     font-weight: 400;
-    color: rgba(0, 0, 0, 0.2);
+    color: rgb(92 70 70 / 60%);;
     display: block;
     margin-bottom: 0;
 }
