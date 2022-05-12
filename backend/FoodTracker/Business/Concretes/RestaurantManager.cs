@@ -6,6 +6,7 @@ using Core.Utilities.Business;
 using Core.Utilities.Results;
 using DataAccess.Abstracts;
 using Entities.Concretes;
+using Entities.Dtos;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -51,6 +52,11 @@ namespace Business.Concretes
 		{
 			var restorant = _restaurantDal.GetAll(r => r.CategoryId == categoryId);
 			return new SuccessDataResult<List<Restaurant>>(restorant);
+		}
+
+		public IDataResult<List<RestaurantDto>> GetAllWithDetails()
+		{
+			return new SuccessDataResult<List<RestaurantDto>>(_restaurantDal.GetAllWithDetails(), Messages.RestaurantListed);
 		}
 
 		public IDataResult<Restaurant> GetById(int restaurantId)

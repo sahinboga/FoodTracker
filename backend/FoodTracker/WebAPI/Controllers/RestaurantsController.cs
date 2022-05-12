@@ -22,6 +22,12 @@ namespace WebAPI.Controllers
 			return this.ResponseResult(_restaurantService.GetAll());
 		}
 
+		[HttpGet("getalldetailrestaurants")]
+		public IActionResult GetAllWithDetails()
+		{
+			return this.ResponseResult(_restaurantService.GetAllWithDetails());
+		}
+
 		[HttpGet("getbyid")]
 		public IActionResult GetById(int id)
 		{

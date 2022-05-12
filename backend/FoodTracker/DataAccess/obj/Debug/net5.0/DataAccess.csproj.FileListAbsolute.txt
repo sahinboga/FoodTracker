@@ -11,7 +11,6 @@ C:\Users\CASPER\Documents\GitHub\FoodTracker\backend\FoodTracker\DataAccess\obj\
 C:\Users\CASPER\Documents\GitHub\FoodTracker\backend\FoodTracker\DataAccess\obj\Debug\net5.0\DataAccess.AssemblyInfoInputs.cache
 C:\Users\CASPER\Documents\GitHub\FoodTracker\backend\FoodTracker\DataAccess\obj\Debug\net5.0\DataAccess.AssemblyInfo.cs
 C:\Users\CASPER\Documents\GitHub\FoodTracker\backend\FoodTracker\DataAccess\obj\Debug\net5.0\DataAccess.csproj.CoreCompileInputs.cache
-C:\Users\CASPER\Documents\GitHub\FoodTracker\backend\FoodTracker\DataAccess\obj\Debug\net5.0\DataAccess.csproj.CopyComplete
 C:\Users\CASPER\Documents\GitHub\FoodTracker\backend\FoodTracker\DataAccess\obj\Debug\net5.0\DataAccess.dll
 C:\Users\CASPER\Documents\GitHub\FoodTracker\backend\FoodTracker\DataAccess\obj\Debug\net5.0\ref\DataAccess.dll
 C:\Users\CASPER\Documents\GitHub\FoodTracker\backend\FoodTracker\DataAccess\obj\Debug\net5.0\DataAccess.pdb
