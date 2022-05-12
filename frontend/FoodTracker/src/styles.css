@@ -3,3 +3,9 @@
 :root {
     --primaryThemeColor: rgb(238, 188, 94);
 }
+
+body{
+    
+    background: lightblue !important;
+    
+}
