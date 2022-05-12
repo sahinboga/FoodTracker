@@ -71,4 +71,3 @@ C:\Users\CASPER\Documents\GitHub\FoodTracker\backend\FoodTracker\WebAPI\obj\Debu
 C:\Users\CASPER\Documents\GitHub\FoodTracker\backend\FoodTracker\WebAPI\obj\Debug\net5.0\ref\WebAPI.dll
 C:\Users\CASPER\Documents\GitHub\FoodTracker\backend\FoodTracker\WebAPI\obj\Debug\net5.0\WebAPI.pdb
 C:\Users\CASPER\Documents\GitHub\FoodTracker\backend\FoodTracker\WebAPI\obj\Debug\net5.0\WebAPI.genruntimeconfig.cache
-C:\Users\CASPER\Documents\GitHub\FoodTracker\backend\FoodTracker\WebAPI\obj\Debug\net5.0\WebAPI.csproj.CopyComplete

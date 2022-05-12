@@ -47,9 +47,9 @@ namespace WebAPI.Controllers
 
 
         [HttpPost("add")]
-        public IActionResult Add([FromForm] IFormFile imageFile, [FromForm] RestaurantImage restaurantImage)
+        public IActionResult Add([FromForm] IFormFile file, [FromForm] int restaurantId)
         {
-            return this.ResponseResult(_restaurantImageService.UploadRestaurantImage(imageFile, restaurantImage));
+            return this.ResponseResult(_restaurantImageService.UploadRestaurantImage(file, new RestaurantImage { RestaurantId=restaurantId}));
         }
 
         [HttpPost("update")]
