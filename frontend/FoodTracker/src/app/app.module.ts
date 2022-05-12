@@ -10,6 +10,8 @@ import { NaviComponent } from './components/navi/navi.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 import { ToastrModule } from 'ngx-toastr';
+import { CountinesFilterByCityidPipe } from './pipes/countines-filter-by-cityid.pipe';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 
 @NgModule({
@@ -17,7 +19,8 @@ import { ToastrModule } from 'ngx-toastr';
     AppComponent,
     RestaurantComponent,
     CategoryComponent,
-    NaviComponent
+    NaviComponent,
+    CountinesFilterByCityidPipe
   ],
   imports: [
     BrowserModule,
@@ -28,6 +31,7 @@ import { ToastrModule } from 'ngx-toastr';
     ToastrModule.forRoot({
       positionClass:"toast-top-right"
     }),
+    BrowserAnimationsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
