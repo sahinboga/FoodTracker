@@ -5,6 +5,7 @@ import { RootURL } from '../constant';
 import { DataResponseModel } from '../models/dataResponseModel';
 import { ResponseModel } from '../models/responseModel';
 import { Restaurant } from '../models/restaurant';
+import {RestaurantDetail} from '../models/restaurantDetail'
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,10 @@ export class RestaurantService {
 
   getRestaurants():Observable<DataResponseModel<Restaurant[]>>{
     return this.httpClient.get<DataResponseModel<Restaurant[]>>(this.apiUrl + "/getallrestaurants")
+  }
+
+  getDetailRestaurants():Observable<DataResponseModel<RestaurantDetail[]>>{
+    return this.httpClient.get<DataResponseModel<RestaurantDetail[]>>(this.apiUrl + "/getalldetailrestaurants")
   }
 
   getRestaurantById(restaurantId:number):Observable<DataResponseModel<Restaurant>>{
