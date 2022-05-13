@@ -17,6 +17,9 @@ export class CountyService {
     return this.httpClient.get<DataResponseModel<County[]>>(this.apiUrl + "/getallcounties")
   }
 
+  getByCountyId(countyId:number):Observable<DataResponseModel<County>>{
+    return this.httpClient.get<DataResponseModel<County>>(this.apiUrl + "/getbyid?countyId="+countyId)
+  }
   getCountiesByCity(cityId:number):Observable<DataResponseModel<County[]>>{
     return this.httpClient.get<DataResponseModel<County[]>>(this.apiUrl + "/getcountiesbycity?cityId="+cityId)
   }

@@ -24,11 +24,11 @@ export class RestaurantService {
   }
 
   getRestaurantById(restaurantId:number):Observable<DataResponseModel<Restaurant>>{
-    return this.httpClient.get<DataResponseModel<Restaurant>>(this.apiUrl + "getbyid?id="+restaurantId)
+    return this.httpClient.get<DataResponseModel<Restaurant>>(this.apiUrl + "/getbyid?id="+restaurantId)
   }
 
   getAllByCategoryId(categoryId:number):Observable<DataResponseModel<Restaurant>>{
-    return this.httpClient.get<DataResponseModel<Restaurant>>(this.apiUrl + "getallbycategoryid?categoryId="+categoryId)
+    return this.httpClient.get<DataResponseModel<Restaurant>>(this.apiUrl + "/getallbycategoryid?categoryId="+categoryId)
   }
 
   addRestaurant(restaurant:Restaurant):Observable<ResponseModel>{
@@ -39,7 +39,7 @@ export class RestaurantService {
     return this.httpClient.post<ResponseModel>(this.apiUrl+"/update",restaurant);
   }
 
-  deleteRestaurant(restaurant:Restaurant):Observable<ResponseModel>{
+  deleteRestaurant(restaurant:RestaurantDetail):Observable<ResponseModel>{
     return this.httpClient.post<ResponseModel>(this.apiUrl+"/delete",restaurant);
   }
 }
