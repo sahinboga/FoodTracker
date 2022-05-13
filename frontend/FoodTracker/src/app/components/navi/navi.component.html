@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark" id="ftco-navbar">
+<nav class="navbar fixed-top navbar-expand-lg navbar-dark ftco_navbar bg-dark " id="ftco-navbar">
   <div class="container">
     <a class="navbar-brand" routerLink="/">Food<span>Tracker</span></a>
     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav"
@@ -24,37 +24,37 @@
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addRestaurantLabel">Modal title</h5>
+        <h5 class="modal-title" id="addRestaurantLabel">Restoran Ekle</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
       <div class="modal-body">
-        <form >
+        <form [formGroup]="addRestaurantForm">
           <div class="form-floating mb-3">
             <input type="text" formControlName="restaurantName" class="form-control" id="restaurantName"
               placeholder="Restoran Adı">
             <label for="floatingFirstname">Restoran Adı</label>
           </div>
+
+          <label for="categorySelect">Restoran Türü:</label>
           <div class="form-floating mb-3">
-            <select class="form-select" aria-label="Default select example">
-              <option selected>Kategori Seçiniz</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select id="categorySelect" class="form-select" formControlName="categoryId">
+              <option *ngFor="let category of categories" [value]="category.id">
+                  {{category.categoryName}}
+              </option>
             </select>
           </div>
+
+          <label for="categorySelect">İl/İlçe:</label>
           <div class="input-group form-floating mb-3">
-            <label class="form-label">Resim Yükle</label>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>İl Seçiniz</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select id="citySelect" class="form-select" formControlName="cityId">
+              <option *ngFor="let city of cities" [value]="city.id">
+                  {{city.cityName}}
+              </option>
             </select>
-            <select class="form-select" aria-label="Default select example">
-              <option selected>İlçe Seçiniz</option>
-              <option value="1">One</option>
-              <option value="2">Two</option>
-              <option value="3">Three</option>
+            <select id="countySelect" class="form-select" formControlName="countyId">
+              <option *ngFor="let county of counties | countinesFilterByCityid:addRestaurantForm.get('cityId').value" [value]="county.id">
+                  {{county.countyName}}
+              </option>
             </select>
           </div>
           <div class="form-floating mb-3">
@@ -62,15 +62,11 @@
               placeholder="Kuruluş Tarihi">
             <label for="floatingInput">Kuruluş Tarihi</label>
           </div>
-          <div class="mb-3">
-            <label for="formFileMultiple" class="form-label">Resim Yükle</label>
-            <input class="form-control" type="file" id="formFileMultiple" multiple>
-          </div>
         </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-danger" data-bs-dismiss="modal">İptal</button>
-        <button type="button" class="btn btn-primary">Kaydet</button>
+        <button type="button" class="btn btn-primary" data-bs-dismiss="modal"  (click)="addRestaurant()">Kaydet</button>
       </div>
     </div>
   </div>
