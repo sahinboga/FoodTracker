@@ -31,5 +31,11 @@ namespace WebAPI.Controllers
 		{
 			return this.ResponseResult(_countyService.GetCountyByCity(cityId));
 		}
+
+		[HttpGet("getbyid")]
+		public IActionResult GetCountyById(int countyId)
+		{
+			return this.ResponseResult(_countyService.GetById(countyId));
+		}
 	}
 }
