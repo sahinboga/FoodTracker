@@ -7,7 +7,7 @@ import { County } from '../models/county';
 export class CountinesFilterByCityidPipe implements PipeTransform {
 
   transform(value: County[], cityId: number): County[] {
-    console.log(cityId)
+    //console.log(cityId)
     return cityId? value.filter(c=>c.cityId==cityId):value;
   }
 
