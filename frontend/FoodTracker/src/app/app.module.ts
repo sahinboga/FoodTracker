@@ -12,6 +12,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ToastrModule } from 'ngx-toastr';
 import { CountinesFilterByCityidPipe } from './pipes/countines-filter-by-cityid.pipe';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { RestaurantDetailComponent } from './components/restaurant-detail/restaurant-detail.component';
 
 
 @NgModule({
@@ -20,7 +21,8 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
     RestaurantComponent,
     CategoryComponent,
     NaviComponent,
-    CountinesFilterByCityidPipe
+    CountinesFilterByCityidPipe,
+    RestaurantDetailComponent
   ],
   imports: [
     BrowserModule,
