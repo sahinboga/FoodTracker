@@ -48,6 +48,12 @@ namespace Business.Concretes
 			return new SuccessDataResult<List<Restaurant>>(_restaurantDal.GetAll(),Messages.RestaurantListed);
 		}
 
+		public IDataResult<List<RestaurantDto>> GetAllByCategory(string category)
+		{
+			var restorant = _restaurantDal.GetAllWithDetails(r => r.Category == category);
+			return new SuccessDataResult<List<RestaurantDto>>(restorant);
+		}
+
 		public IDataResult<List<Restaurant>> GetAllByCategoryId(int categoryId)
 		{
 			var restorant = _restaurantDal.GetAll(r => r.CategoryId == categoryId);
@@ -63,6 +69,12 @@ namespace Business.Concretes
 		{
 			var restaurant=_restaurantDal.GetById(r=>r.Id==restaurantId);
 			return new SuccessDataResult<Restaurant>(restaurant);
+		}
+
+		public IDataResult<RestaurantDto> GetDetailById(int restaurantId)
+		{
+			var restaurant = _restaurantDal.GetAllWithDetails(r => r.Id==restaurantId).FirstOrDefault();
+			return new SuccessDataResult<RestaurantDto>(restaurant);
 		}
 
 		[ValidationAspect(typeof(RestaurantValidator))]

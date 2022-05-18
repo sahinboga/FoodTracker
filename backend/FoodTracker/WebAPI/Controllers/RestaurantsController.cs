@@ -34,10 +34,22 @@ namespace WebAPI.Controllers
 			return this.ResponseResult(_restaurantService.GetById(id));
 		}
 
+		[HttpGet("getdetailbyid")]
+		public IActionResult GetDetailById(int id)
+		{
+			return this.ResponseResult(_restaurantService.GetDetailById(id));
+		}
+
 		[HttpGet("getallbycategoryid")]
 		public IActionResult GetAllByCategoryId(int categoryId)
 		{
 			return this.ResponseResult(_restaurantService.GetAllByCategoryId(categoryId));
+		}
+
+		[HttpGet("getallbycategory")]
+		public IActionResult GetAllByCategory(string category)
+		{
+			return this.ResponseResult(_restaurantService.GetAllByCategory(category));
 		}
 
 		[HttpPost("add")]
