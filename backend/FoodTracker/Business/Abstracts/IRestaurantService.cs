@@ -10,7 +10,7 @@ namespace Business.Abstracts
 		IDataResult<List<Restaurant>> GetAll();
 		IDataResult<List<RestaurantDto>> GetAllWithDetails();
 		IDataResult<List<Restaurant>> GetAllByCategoryId(int categoryId);
-		IDataResult<List<RestaurantDto>> GetAllByCategory(string category);
+		IDataResult<List<RestaurantDto>> GetDetailsByCategoryId(int categoryId);
 		IResult Add(Restaurant restaurant);
 		IDataResult<Restaurant> GetById(int restaurantId);
 		IDataResult<RestaurantDto> GetDetailById(int restaurantId);

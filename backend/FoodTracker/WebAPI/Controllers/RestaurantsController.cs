@@ -46,10 +46,10 @@ namespace WebAPI.Controllers
 			return this.ResponseResult(_restaurantService.GetAllByCategoryId(categoryId));
 		}
 
-		[HttpGet("getallbycategory")]
-		public IActionResult GetAllByCategory(string category)
+		[HttpGet("getdetailsbycategoryid")]
+		public IActionResult GetDetailsByCategoryId(int categoryId)
 		{
-			return this.ResponseResult(_restaurantService.GetAllByCategory(category));
+			return this.ResponseResult(_restaurantService.GetDetailsByCategoryId(categoryId));
 		}
 
 		[HttpPost("add")]

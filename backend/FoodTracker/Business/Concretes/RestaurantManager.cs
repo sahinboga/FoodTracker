@@ -48,9 +48,9 @@ namespace Business.Concretes
 			return new SuccessDataResult<List<Restaurant>>(_restaurantDal.GetAll(),Messages.RestaurantListed);
 		}
 
-		public IDataResult<List<RestaurantDto>> GetAllByCategory(string category)
+		public IDataResult<List<RestaurantDto>> GetDetailsByCategoryId(int categoryId)
 		{
-			var restorant = _restaurantDal.GetAllWithDetails(r => r.Category == category);
+			var restorant = _restaurantDal.GetAllWithDetails(r => r.CategoryId==categoryId);
 			return new SuccessDataResult<List<RestaurantDto>>(restorant);
 		}
 

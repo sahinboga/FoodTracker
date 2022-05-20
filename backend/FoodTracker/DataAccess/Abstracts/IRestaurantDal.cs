@@ -9,6 +9,6 @@ namespace DataAccess.Abstracts
 {
 	public interface IRestaurantDal:IEntityRepository<Restaurant>
 	{
-		List<RestaurantDto> GetAllWithDetails(Expression<Func<RestaurantDto, bool>> filter = null);
+		List<RestaurantDto> GetAllWithDetails(Expression<Func<Restaurant, bool>> filter = null);
 	}
 }

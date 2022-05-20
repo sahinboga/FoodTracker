@@ -11,11 +11,11 @@ namespace DataAccess.Concretes.EntityFramework
 {
 	public class EfRestaurantDal : EfEntityRepositoryBase<Restaurant, FoodTrackerContext>, IRestaurantDal
 	{
-		public List<RestaurantDto> GetAllWithDetails(Expression<Func<RestaurantDto, bool>> filter = null)
+		public List<RestaurantDto> GetAllWithDetails(Expression<Func<Restaurant, bool>> filter = null)
 		{
 			using (FoodTrackerContext context = new FoodTrackerContext())
 			{
-				var result = from r in context.Restaurants
+				var result = from r in filter==null? context.Restaurants: context.Restaurants.Where(filter)
 							 join c in context.Categories on r.CategoryId equals c.Id
 							 join co in context.Counties on r.CountyId equals co.Id
 							 join city in context.Cities on co.CityId equals city.Id
@@ -27,7 +27,7 @@ namespace DataAccess.Concretes.EntityFramework
 								 Location = city.CityName + "/" + co.CountyName,
 								 FoundedDate = r.FoundedDate
 							 };
-				return filter == null ? result.ToList() : result.Where(filter).ToList();
+				return result.ToList();
 			}
 		}
 	}
