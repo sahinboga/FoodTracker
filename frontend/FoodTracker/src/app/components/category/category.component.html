@@ -11,14 +11,14 @@
             <div class="collapse multi-collapse scrollbar scrollbar-primary" id="categoryCollapse">
                 <div class="card-body overflow-auto ">
                     <div class="form-check my-2" *ngFor="let category of categories">
-                        <input class="form-check-input" type="checkbox" value="" >
-                        <label class="form-check-label">
+                        <input class="form-check-input" type="checkbox" value="" id="{{'categoryCheck'+category.id}}" (click)="changeCheckedCategory($event,category.id)">
+                        <label class="form-check-label" for="{{'categoryCheck'+category.id}}">
                             {{category.categoryName}}
                         </label>
                     </div>
                 </div>
             </div>
         </article>
-        <button class="btn w-100 mt-3 btn-block btn-primary">Uygula</button>
+        <button routerLink="/restaurants" [queryParams]="{categoryId: selectedCategory.toString()}" (click)="applyFilter()" class="btn w-100 mt-3 btn-block btn-primary">Uygula</button>
     </div>
 </div>

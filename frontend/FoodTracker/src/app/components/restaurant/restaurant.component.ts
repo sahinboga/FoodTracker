@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 import { ToastrService } from 'ngx-toastr';
 import { Category } from 'src/app/models/category';
 import { City } from 'src/app/models/city';
@@ -23,6 +24,7 @@ export class RestaurantComponent implements OnInit {
   restaurants:RestaurantDetail[]=[]
   currentRestaurant:Restaurant
   restaurant:Restaurant
+
   categories:Category[]=[]
   cities:City[]=[]
   counties:County[]=[]
@@ -34,11 +36,19 @@ export class RestaurantComponent implements OnInit {
       private cityService:CityService,
         private countyService:CountyService,
         private categoryService:CategoryService,
-        private toastrService:ToastrService
+        private toastrService:ToastrService,
+        private activatedRoute:ActivatedRoute
   ) { }
 
   ngOnInit(): void {
 
+    this.activatedRoute.queryParams.subscribe(params=>{
+      if(params["categoryId"]){
+        this.getRestaurantsByCategoryId(params["categoryId"])
+      }else{
+        this.getDetailRestaurants()
+      }
+    })
     this.getDetailRestaurants()
     
     this.getAllCategories()
@@ -121,7 +131,7 @@ export class RestaurantComponent implements OnInit {
   deleteRestaurant(restaurant:RestaurantDetail){
     Swal.fire({
       title: 'Emin misin?',
-      text:"Kişi silinecek",
+      text:"Restoran silinecek",
       icon:'warning',
       showCancelButton: true,
       cancelButtonText:"İptal",
@@ -144,5 +154,14 @@ export class RestaurantComponent implements OnInit {
       }
     })
   }
+
+  // Restoran Kategoriye Göre Çağırma
+
+  getRestaurantsByCategoryId(categoryId:number){
+    this.restaurantService.getDetailsByCategoryId(categoryId).subscribe(response=>{
+      this.restaurants=response.data
+    })
+  }
+  
   
 }
