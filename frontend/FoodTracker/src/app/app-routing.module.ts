@@ -4,6 +4,7 @@ import { RestaurantDetailComponent } from './components/restaurant-detail/restau
 import { RestaurantComponent } from './components/restaurant/restaurant.component';
 
 const routes: Routes = [
+  {path:"",component:RestaurantComponent},
   {path:"restaurants",component:RestaurantComponent},
   {path:"restaurants/detail/:restaurantId",component:RestaurantDetailComponent}
 ];

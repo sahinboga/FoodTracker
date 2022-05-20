@@ -11,7 +11,7 @@
                             <div class="restaurant-wrap rounded">
                                 <a>
                                     <div class="img rounded d-flex align-items-end"
-                                        style="background-image: url();">
+                                        style="background-image: url(https://images.waiterio.com/images/article-cover-restaurant-floor-plan-1a89418b-1024w.jpg);">
                                     </div>
                                 </a>
                                 <div class="text">
@@ -28,7 +28,7 @@
                                         <p class="cat">{{restaurant.location}}</p>
                                     </div>
                                     <div class="d-flex mb-0 w-100 justify-content-between">
-                                        <button class="btn w-50  btn-secondary py-2 ms-1">Detay</button>
+                                        <button routerLink="/restaurants/detail/{{restaurant.id}}" class="btn w-50  btn-secondary py-2 ms-1">Detay</button>
                                         <div class="action-btn">
                                             <button data-bs-toggle="modal" data-bs-target="#updateRestaurant" (click)="getRestaurantById(restaurant.id)"><i
                                                 class="fas fa-edit"></i>
@@ -92,7 +92,7 @@
               <label for="floatingInput">Kuruluş Tarihi</label>
             </div>
           </form>
-          {{updateRestaurantForm.value | json}}
+          <!-- {{updateRestaurantForm.value | json}} -->
         </div>
         <div class="modal-footer">
           <button type="button" class="btn btn-danger" data-bs-dismiss="modal">İptal</button>
